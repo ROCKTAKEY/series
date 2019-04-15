@@ -48,7 +48,7 @@
 
 (defmacro series-defun (function-name &optional docstring &rest functions)
   ""
-  (declare (doc-string 3) (indent 2))
+  (declare (indent 2))
   `(defun ,function-name ()
      ,docstring
      (interactive)
