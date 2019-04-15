@@ -46,9 +46,12 @@
 
 (defvar series--mark-history nil)
 
-(defmacro series-defun (function-name &optional docstring &rest functions)
+(cl-defmacro series-defun (function-name &optional docstring &rest functions)
   ""
-  (declare (indent 2))
+  (declare (doc-string 2) (indent defun))
+  (unless (stringp docstring)
+    (setq functions (cons docstring functions))
+    (setq docstring ""))
   `(defun ,function-name ()
      ,docstring
      (interactive)
