@@ -1,0 +1,29 @@
+[[https://github.com/ROCKTAKEY/series][https://img.shields.io/github/tag/ROCKTAKEY/series.svg?style=flat-square]]
+[[file:LICENSE][https://img.shields.io/github/license/ROCKTAKEY/series.svg?style=flat-square]]
+[[https://travis-ci.com/ROCKTAKEY/series/][https://img.shields.io/travis/com/ROCKTAKEY/series/master.svg?style=flat-square]]
+* Multiple functions in continuous execution.
+
+* How to Use?
+#+BEGIN_SRC emacs-lisp -n
+(series-defun series-beg-line
+    "Some document. This can be omitted."
+  beginning-of-line
+  beginning-of-defun
+  beginning-of-buffer
+  ;; You can use `series-return' to return first position.
+  series-return)
+
+;; You can define function use `series-count'.
+;; This variable have number how many times function is executed.
+(defun forward-more-long
+    "If executed many, move many."
+  (call-interactively
+   (cond
+    ((eq series-count 1)
+     #'forward-char)
+    ((eq series-count 2)
+     #'forward-word)
+    (t #'forward-symbol))))
+#+END_SRC
+* License
+  This package is licensed by GPLv3. See [[file:LICENSE][LICENSE]].
