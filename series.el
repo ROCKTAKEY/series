@@ -69,6 +69,7 @@
 
 (defun series-return ()
   "Return first position."
+  (interactive)
   (goto-char series--mark-history))
 
 (provide 'series)
