@@ -44,6 +44,9 @@
 
 
 
+(defvar series-docstring-suffix
+  "\n\nThis function is defined by `series-defun'.")
+
 (defvar series--mark-history nil)
 
 (cl-defmacro series-defun (function-name &optional docstring &rest functions)
@@ -52,6 +55,7 @@
   (unless (stringp docstring)
     (setq functions (cons docstring functions))
     (setq docstring ""))
+  (setq docstring (concat docstring series-docstring-suffix))
   `(defun ,function-name ()
      ,docstring
      (interactive)
