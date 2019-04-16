@@ -60,7 +60,7 @@
      ,docstring
      (interactive)
      (when (eq series-count 1)
-       (setq series--mark-history (mark)))
+       (setq series--mark-history (point)))
      (call-interactively
       (nth
        (mod (1- series-count)
